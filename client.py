@@ -1,5 +1,6 @@
 import discord
 from discord import app_commands
+from commands import fetch_commands
 
 class Client(discord.Client):
 
@@ -7,7 +8,7 @@ class Client(discord.Client):
         intents = discord.Intents.all()
         super().__init__(intents=intents)
         self.tree = app_commands.CommandTree(self)
-        self.guild = discord.Object(guild_id)
+        self.guild = discord.Object(id=guild_id)
 
     async def on_ready(self):
         # Successful login message
@@ -19,4 +20,5 @@ class Client(discord.Client):
 
     async def setup_hook(self) -> None:
         # Syncing commands to our guild
+        await fetch_commands(self.tree)
         await self.tree.sync(guild=self.guild)
