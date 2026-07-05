@@ -1,6 +1,7 @@
 # Discord Bot
 
 A Discord bot built for my personal server.
+NOTE: It's still under initial development.
 
 ## Configuration
 
