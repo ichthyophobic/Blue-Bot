@@ -15,10 +15,11 @@ class Client(discord.Client):
         print(f'Successfully logged in as {self.user}')
         # Setting activity
         await self.change_presence(
-            activity=discord.Game("Roblox")
+            activity=discord.Game("Open-Source")
         )
 
-    async def setup_hook(self) -> None:
-        # Syncing commands to our guild
-        await fetch_commands(self.tree)
-        await self.tree.sync(guild=self.guild)
+    async def setup_hook(self):
+        print('Syncing commands...')
+        fetch_commands(self.tree, self.guild)
+        synced = await self.tree.sync(guild=self.guild)
+        print("Synced:", [cmd.name for cmd in synced])

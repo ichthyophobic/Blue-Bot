@@ -1,8 +1,9 @@
 from discord import Guild, HTTPException, Member, app_commands
 from discord import Interaction
 from datetime import timedelta
+from discord.abc import Snowflake
 
-def fetch_moderation_commands(tree: app_commands.CommandTree):
+def fetch_moderation_commands(tree: app_commands.CommandTree, guild: Snowflake):
 
     async def permission_check(
         interaction: Interaction,
@@ -42,7 +43,7 @@ def fetch_moderation_commands(tree: app_commands.CommandTree):
 
         return True
 
-    @tree.command(name='kick', description='Kick a member')
+    @tree.command(name='kick', description='Kick a member', guild=guild)
     @app_commands.guild_only()
     @app_commands.default_permissions(kick_members=True)
     @app_commands.checks.has_permissions(kick_members=True)
@@ -70,7 +71,7 @@ def fetch_moderation_commands(tree: app_commands.CommandTree):
                 f"Successfully kicked the member {member.mention}.\nReason: {reason}"
             )
 
-    @tree.command(name='ban', description='Ban a member')
+    @tree.command(name='ban', description='Ban a member', guild=guild)
     @app_commands.guild_only()
     @app_commands.default_permissions(ban_members=True)
     @app_commands.checks.has_permissions(ban_members=True)
@@ -98,7 +99,7 @@ def fetch_moderation_commands(tree: app_commands.CommandTree):
                 f"Successfully banned the member {member.mention}.\nReason: {reason}"
             )
 
-    @tree.command(name='timeout', description='Timeout a member')
+    @tree.command(name='timeout', description='Timeout a member', guild=guild)
     @app_commands.guild_only()
     @app_commands.checks.has_permissions(moderate_members=True)
     @app_commands.checks.bot_has_permissions(moderate_members=True)
