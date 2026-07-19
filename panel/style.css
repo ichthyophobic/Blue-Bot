@@ -1,0 +1,317 @@
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: #1e1e2e;
+  color: #cdd6f4;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* ============================================================
+   APP LAYOUT
+   ============================================================ */
+#app {
+  display: flex;
+  height: 100vh;
+}
+
+/* ============================================================
+   SIDEBAR (Fixed)
+   ============================================================ */
+#sidebar {
+  width: 240px;
+  background: #11111b;
+  padding: 1.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  border-right: 1px solid #313244;
+}
+
+#sidebar .logo {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #89b4fa;
+  padding: 0 0.75rem 1.5rem 0.75rem;
+  border-bottom: 1px solid #313244;
+  margin-bottom: 1rem;
+}
+
+#sidebar .logo span {
+  color: #a6e3a1;
+}
+
+#sidebar ul {
+  list-style: none;
+  flex: 1;
+}
+
+#sidebar li {
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  margin-bottom: 2px;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+#sidebar li:hover {
+  background: #313244;
+}
+
+#sidebar li.active {
+  background: #45475a;
+  color: #89b4fa;
+}
+
+#sidebar li .icon {
+  font-size: 1.2rem;
+}
+
+/* ============================================================
+   MAIN CONTENT (Changes per page)
+   ============================================================ */
+#content {
+  flex: 1;
+  padding: 2rem 2.5rem;
+  overflow-y: auto;
+  background: #1e1e2e;
+}
+
+/* ============================================================
+   TYPOGRAPHY
+   ============================================================ */
+.page-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #89b4fa;
+  margin-bottom: 0.25rem;
+}
+
+.page-subtitle {
+  color: #6c7086;
+  margin-bottom: 2rem;
+  font-size: 0.95rem;
+}
+
+/* ============================================================
+   STATS CARDS
+   ============================================================ */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.stat-card {
+  background: #313244;
+  padding: 1.25rem 1.5rem;
+  border-radius: 12px;
+  border: 1px solid #45475a;
+}
+
+.stat-card .number {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #a6e3a1;
+}
+
+.stat-card .label {
+  font-size: 0.85rem;
+  color: #6c7086;
+  margin-top: 0.25rem;
+}
+
+/* ============================================================
+   TABLES
+   ============================================================ */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+th {
+  text-align: left;
+  padding: 0.75rem 1rem;
+  color: #6c7086;
+  font-weight: 500;
+  border-bottom: 2px solid #45475a;
+}
+
+td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #313244;
+}
+
+tr:hover td {
+  background: #313244;
+}
+
+code {
+  background: #11111b;
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.85rem;
+  color: #a6e3a1;
+}
+
+/* ============================================================
+   LOGS
+   ============================================================ */
+.log-container {
+  background: #11111b;
+  padding: 1.25rem;
+  border-radius: 12px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.85rem;
+  overflow-x: auto;
+  margin-top: 1rem;
+  border: 1px solid #313244;
+}
+
+.log-container .log-line {
+  padding: 2px 0;
+}
+
+.log-container .info  { color: #89b4fa; }
+.log-container .warn  { color: #f9e2af; }
+.log-container .error { color: #f38ba8; }
+
+/* ============================================================
+   SETTINGS
+   ============================================================ */
+.setting-group {
+  background: #313244;
+  padding: 1.25rem 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  border: 1px solid #45475a;
+}
+
+.setting-group label {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  padding: 0.5rem 0;
+}
+
+.setting-group input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #89b4fa;
+  cursor: pointer;
+}
+
+.setting-group input[type="text"] {
+  background: #1e1e2e;
+  border: 1px solid #45475a;
+  color: #cdd6f4;
+  padding: 0.4rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  width: 120px;
+  transition: border-color 0.2s;
+}
+
+.setting-group input[type="text"]:focus {
+  outline: none;
+  border-color: #89b4fa;
+}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.btn {
+  background: #89b4fa;
+  color: #1e1e2e;
+  border: none;
+  padding: 0.6rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.btn:hover {
+  opacity: 0.85;
+}
+
+/* ============================================================
+   SERVER LIST
+   ============================================================ */
+.server-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  background: #313244;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+  border: 1px solid #45475a;
+}
+
+.server-item .name {
+  font-weight: 500;
+}
+
+.server-item .members {
+  color: #6c7086;
+  font-size: 0.9rem;
+}
+
+/* ============================================================
+   STATUS BOX
+   ============================================================ */
+.status-box {
+  margin-top: 2rem;
+  background: #313244;
+  padding: 1.25rem;
+  border-radius: 12px;
+  border: 1px solid #45475a;
+}
+
+.status-box .online {
+  color: #a6e3a1;
+}
+
+.status-box .timestamp {
+  color: #6c7086;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+/* ============================================================
+   SCROLLBAR
+   ============================================================ */
+#content::-webkit-scrollbar {
+  width: 8px;
+}
+
+#content::-webkit-scrollbar-track {
+  background: #1e1e2e;
+}
+
+#content::-webkit-scrollbar-thumb {
+  background: #45475a;
+  border-radius: 4px;
+}
+
+#content::-webkit-scrollbar-thumb:hover {
+  background: #6c7086;
+}

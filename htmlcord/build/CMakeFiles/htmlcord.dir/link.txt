@@ -1,0 +1,1 @@
+/usr/sbin/c++ -Wl,--dependency-file=CMakeFiles/htmlcord.dir/link.d CMakeFiles/htmlcord.dir/src/main.cpp.o -o /home/bitryx/Projects/Blue-Bot/htmlcord/htmlcord
