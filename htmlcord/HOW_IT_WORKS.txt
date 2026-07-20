@@ -1,0 +1,19 @@
+This small app is intented to be run from the bot's dashboard.
+It takes a file containing logged messages of a ticket.
+It parses the logs, and builds a static HTML file for bot's panel.
+It also bundles the file with other attachments needed.
+The transactions can be seen as identical messages in Discord.
+
+Example of the given records to the app:
+```
+// Example: Serializing message data
+const messages = await channel.messages.fetch({ limit: 5 });
+const serializedMessages = messages.map(msg => ({
+    message_id: msg.id,
+    content: msg.content,
+    author_id: msg.author.id,
+    timestamp: msg.createdTimestamp,
+    attachments: msg.attachments,
+}));
+console.log(JSON.stringify(serializedMessages, null, 2));
+```
